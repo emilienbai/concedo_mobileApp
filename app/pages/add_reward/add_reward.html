@@ -1,0 +1,22 @@
+<ScrollView>
+    <GridLayout columns="*" rows="auto, 50,*, auto, auto">
+        <StackLayout col="0" row="0">
+            <Label text="Name / Title">Pseudo</Label>
+            <TextField hint="Title" [(ngModel)]="reward.name"></TextField>
+
+            <Label text="Price"></Label>
+            <TextField hint=".." keyboardType="number" [(ngModel)]="reward.price"></TextField>
+
+            <Label text="Password"></Label>
+            <TextField hint=".." [(ngModel)]="reward.code"></TextField>
+        </StackLayout>
+
+        <GridLayout rows="auto, *" col="0" row="1" rowSpan="2">
+            <Label row="0" text="Description"></Label>
+            <TextView row="1" hint="Write a description of the reward here" [(ngModel)]="reward.description"></TextView>"
+        </GridLayout>
+
+        <!--Todo add multiple rewards at once-->
+        <Button col="0" row="4" text="Add this Reward" (tap)="submit()" class="btn btn-primary btn-active"></Button>
+    </GridLayout>
+</ScrollView>

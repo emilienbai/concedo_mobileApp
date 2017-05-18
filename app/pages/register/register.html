@@ -1,0 +1,37 @@
+<ScrollView>
+    <StackLayout>
+        <StackLayout>
+            <SegmentedBar #sb (selectedIndexChange)="onChange(sb.selectedIndex)">
+                <SegmentedBarItem title="Volunteer"></SegmentedBarItem>
+                <SegmentedBarItem title="Elderly"></SegmentedBarItem>
+                <SegmentedBarItem title="Rewarder"></SegmentedBarItem>
+            </SegmentedBar>
+
+            <Label text="Pseudo">Pseudo</Label>
+            <TextField hint="Pseudo" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.pseudo"></TextField>
+
+            <Label text="Name"></Label>
+            <TextField hint="Name" autocorrect="false" [(ngModel)]="user.name"></TextField>
+
+            <Label text="Surname"></Label>
+            <TextField hint="Surname" autocorrect="false" [(ngModel)]="user.surname"></TextField>
+
+            <Label text="Address"></Label>
+            <TextField hint="Address" [(ngModel)]="address"></TextField>
+
+            <Label text="Post code"></Label>
+            <TextField hint="Post Code" keyboardType="number" [(ngModel)]="postcode"></TextField>
+
+            <Label text="City"></Label>
+            <TextField hint="City" [(ngModel)]="city"></TextField>
+
+            <Label text="Phone"></Label>
+            <TextField hint="Phone number" keyboardType="number" [(ngModel)]="user.phone"></TextField>
+
+            <Label text="E-mail"></Label>
+            <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
+            <Button text="Register" (tap)="submit()" class="btn btn-primary btn-active"></Button>
+            
+        </StackLayout>
+    </StackLayout>
+</ScrollView>

@@ -1,0 +1,27 @@
+<ScrollView>
+    <GridLayout columns="*" rows="auto, 50,*, auto, auto">
+        <StackLayout col="0" row="0">
+            <Label text="Name / Title">Pseudo</Label>
+            <TextField hint="Title" [(ngModel)]="offer.name"></TextField>
+
+            <Label text="Period" class="todoclean with dates"></Label>
+            <TextField hint="teriod" autocorrect="false" [(ngModel)]="offer.period"></TextField>
+
+            <Label text="Duration (min)"></Label>
+            <TextField hint=".." keyboardType="number" [(ngModel)]="offer.duration"></TextField>
+
+            <Label text="Location"></Label>
+            <TextField hint="Commune" [(ngModel)]="offer.location"></TextField>
+        </StackLayout>
+
+        <GridLayout rows="auto, *" col="0" row="1" rowSpan="2">
+            <Label row="0" text="Description"></Label>
+            <TextView row="1" hint="Write a description of the task you need help for here" [(ngModel)]="offer.description"></TextView>"
+        </GridLayout>
+
+        <ListPicker col="0" row="3" #picker [items]="items" [selectedIndex]="selectedIndex" (selectedIndexChange)="onChange(picker.selectedIndex)"></ListPicker>
+
+        <Button col="0" row="4" text="Post this offer" (tap)="submit()" class="btn btn-primary btn-active"></Button>
+
+    </GridLayout>
+</ScrollView>

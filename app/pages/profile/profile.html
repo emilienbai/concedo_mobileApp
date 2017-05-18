@@ -1,0 +1,38 @@
+<StackLayout>
+    <Label class="h3" text="Your profile :"></Label>
+    <GridLayout rows="60, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+        <Image row="0" col="0" colSpan="2" src="res://icon" stretch="none" horizontalAlignment="center" class="todo"></Image>
+
+        <Label row="1" col="0" text="Pseudo : "></Label>
+        <Label row="1" col="1" [text]="user.pseudo"></Label>
+        <Label row="2" col="0" text="Name - Surname : "></Label>
+        <Label row="2" col="1" [text]="user.name + ' ' + user.surname"></Label>
+        <Label row="3" col="0" text="Address : "></Label>
+        <Label row="3" col="1" [text]="user.address"></Label>
+        <Label row="4" col="0" text="Phone : "></Label>
+        <Label row="4" col="1" [text]="user.phone"></Label>
+        <Label row="5" col="0" text="Email : "></Label>
+        <Label row="5" col="1" [text]="user.email"></Label>
+        <Label row="6" col="0" text="Type : "></Label>
+        <Label row="6" col="1" [text]="user.type"></Label>
+        <Label row="7" col="0" text="Birthdate : "></Label>
+        <Label row="7" col="1" [text]="user.birthdate"></Label>
+
+    </GridLayout>
+
+    <!-- Volunteer Layout -->
+    <StackLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
+        <Button text="My Offers" [nsRouterLink]="['myOffers']"></Button>
+        <Button text="My Rewards" [nsRouterLink]="['myRewards']"></Button>
+    </StackLayout>
+
+    <!-- Elderly Layout -->
+    <StackLayout visibility="{{ isElderly ? 'visible' : 'collapsed' }}">
+        <Button text="Add a task offer" [nsRouterLink]="['addOffer']"></Button>
+    </StackLayout>
+
+        <!-- Rewarder Layout -->
+    <StackLayout visibility="{{ isRewarder ? 'visible' : 'collapsed' }}">
+        <Button text="Add a reward" [nsRouterLink]="['addReward']"></Button>
+    </StackLayout>
+</StackLayout>

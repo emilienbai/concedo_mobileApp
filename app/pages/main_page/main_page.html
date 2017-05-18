@@ -1,0 +1,33 @@
+<GridLayout rows="*, auto">
+    <Layout row="0">
+        <StackLayout visibility="{{ profileVisibility ? 'visible' : 'collapsed' }}">
+            <ns-profile></ns-profile>
+        </StackLayout>
+        <!--Volunteer Layout-->
+        <StackLayout visibility="{{ availableOffersVisibility ? 'visible' : 'collapsed' }}">
+            <ns-offer-list offersSource="available"></ns-offer-list>
+        </StackLayout>
+
+        <StackLayout visibility="{{ rewardsVisibility ? 'visible' : 'collapsed' }}">
+            <ns-reward-list rewardsSource="available"></ns-reward-list>
+        </StackLayout>
+
+        <!--Elderly Layout-->
+        <StackLayout visibility="{{ currentLocalOffersVisibility ? 'visible' : 'collapsed' }}">
+            <ns-offer-list offersSource="local_current"></ns-offer-list>
+        </StackLayout>
+        <StackLayout visibility="{{ archivedLocalOffersVisibility ? 'visible' : 'collapsed' }}">
+            <ns-offer-list offersSource="local_archived"></ns-offer-list>
+        </StackLayout>
+
+        <!--Rewarder Layout-->
+        <StackLayout visibility="{{ currentLocalRewardsVisibility ? 'visible' : 'collapsed' }}">
+            <ns-reward-list rewardsSource="local_unbought"></ns-reward-list>
+        </StackLayout>
+        <StackLayout visibility="{{ archivedLocalRewardsVisibility ? 'visible' : 'collapsed' }}">
+            <ns-reward-list rewardsSource="local_bought"></ns-reward-list>
+        </StackLayout>
+    </Layout>
+
+    <SegmentedBar row="1" #sb [items]="barItems" selectedIndex="0" (selectedIndexChange)="onChange(sb.selectedIndex)"></SegmentedBar>
+</GridLayout>

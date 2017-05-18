@@ -1,0 +1,16 @@
+<GridLayout rows="*, auto">
+    <Layout row="0">
+        <StackLayout visibility="{{ boughtVisibility ? 'visible' : 'collapsed' }}">
+            <ns-reward-list rewardsSource="local_unused" ></ns-reward-list>
+        </StackLayout>
+
+        <StackLayout visibility="{{ usedVisibility ? 'visible' : 'collapsed' }}">
+            <ns-reward-list rewardsSource="local_used" ></ns-reward-list>
+        </StackLayout>
+    </Layout>
+
+    <SegmentedBar row="1" #sb (selectedIndexChange)="onChange(sb.selectedIndex)">
+        <SegmentedBarItem title="Bought"></SegmentedBarItem>
+        <SegmentedBarItem title="Used"></SegmentedBarItem>
+    </SegmentedBar>
+</GridLayout>

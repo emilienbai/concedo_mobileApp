@@ -1,0 +1,18 @@
+<StackLayout>
+    <Label [visibility]="rewardList.length == 0 ? 'visible' : 'collapse'" text="No rewards to display" class="todo"></Label>
+
+    <Gridlayout columns="*" rows="*">
+        <ListView row="0" [items]="rewardList" id="listId">
+            <ng-template let-item="item">
+                <GridLayout columns="*, *, auto" rows="auto, auto, auto">
+                    <Label row="0" col="0" colSpan="2" [text]="item.name" class="h3"></Label>
+                    <StackLayout row="0" col="2" rowSpan="2" (tap)="getDetails(item)">
+                        <Image verticalAlignement="center" src="res://icon"></Image>
+                    </StackLayout>
+                    <Label row="1" col="0" colSpan="2" [text]="item.description"></Label>
+                    <Label row="2" col="0" [text]="item.price"></Label>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </Gridlayout>
+</StackLayout>

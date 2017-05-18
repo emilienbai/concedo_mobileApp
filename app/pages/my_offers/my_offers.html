@@ -1,0 +1,16 @@
+<GridLayout rows="*, auto">
+    <Layout row="0">
+        <StackLayout visibility="{{ currentVisibility ? 'visible' : 'collapsed' }}">
+            <ns-offer-list offersSource="local_current" ></ns-offer-list>
+        </StackLayout>
+
+        <StackLayout visibility="{{ archivedVisibility ? 'visible' : 'collapsed' }}">
+            <ns-offer-list offersSource="local_archived" ></ns-offer-list>
+        </StackLayout>
+    </Layout>
+
+    <SegmentedBar row="1" #sb (selectedIndexChange)="onChange(sb.selectedIndex)">
+        <SegmentedBarItem title="Current"></SegmentedBarItem>
+        <SegmentedBarItem title="Archived"></SegmentedBarItem>
+    </SegmentedBar>
+</GridLayout>

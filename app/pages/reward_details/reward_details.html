@@ -1,0 +1,27 @@
+<GridLayout columns="*" , rows="*, auto">
+    <GridLayout row="0" columns="*" rows="auto, auto, auto, auto, *">
+        <Label row="0" colSpan="3" [text]="reward.name" class="h1"></Label>
+
+        <Label row="1" text="Price: "></Label>
+
+        <Label row="2" [text]="reward.price" class="h3"></Label>
+
+        <Label row="3" text="Description:"></Label>
+        <ScrollView row="4">
+
+            <TextView col="0" [text]="reward.description" editable="false"></TextView>
+        </ScrollView>
+    </GridLayout>
+
+    <StackLayout row="1" visibility="{{ isBuyable  ? 'visible' : 'collapsed' }}">
+        <Button text="Buy this reward" (tap)="buy()"></Button>
+    </StackLayout>
+
+    <StackLayout row="1" visibility="{{ isUsable  ? 'visible' : 'collapsed' }}">
+        <Button text="Mark as used" (tap)="use()"></Button>
+    </StackLayout>
+
+    <StackLayout row="1" visibility="{{ isRemovable  ? 'visible' : 'collapsed' }}">
+        <Button text="Remove this reward" (tap)="remove()"></Button>
+    </StackLayout>
+</GridLayout>

@@ -1,0 +1,42 @@
+<GridLayout columns="*" , rows="*, auto">
+    <GridLayout row="0" columns="*, *, *" rows="auto, auto, auto, auto, auto, auto, *">
+        <Label row="0" col="0" colSpan="3" [text]="offer.name" class="h1"></Label>
+
+        <Label visibility="{{ showVolunteer  ? 'visible' : 'collapsed' }}" row="1" col="0" text="Volunteer: "></Label>
+        <Label visibility="{{ showVolunteer  ? 'visible' : 'collapsed' }}" row="1" col="1" [text]="offer.volunteer"></Label>
+        <Button visibility="{{ showVolunteer  ? 'visible' : 'collapsed' }}" row="1" col="2" text="Profile" (tap)="getVolunteer()"></Button>
+
+        <Label row="2" col="0" text="Location: "></Label>
+        <Label row="2" col="1" text="Period: "></Label>
+        <Label row="2" col="2" text="Type: "></Label>
+        <Label row="3" col="0" [text]="offer.location" class="h3"></Label>
+        <Label row="3" col="1" [text]="offer.period" class="h3"></Label>
+        <Label row="3" col="2" [text]="offer.type" class="h3"></Label>
+
+        <Label row="4" col="0" text="Duration: "></Label>
+        <Label row="5" col="0" [text]="offer.duration + ' minutes'"></Label>
+        <Label row="4" col="1" text="Reward: "></Label>
+        <Label row="5" col="1" [text]=" offer.reward + ' tokens'"></Label>
+
+        <Label row="6" col="0" text="Description:"></Label>
+        <ScrollView row="7" col="0" colSpan="3">
+            <TextView [text]="offer.description" editable="false"></TextView>
+        </ScrollView>
+    </GridLayout>
+    <StackLayout row="1">
+        <StackLayout visibility="{{ toCommit  ? 'visible' : 'collapsed' }}">
+            <Button text="Commit to this offer" (tap)="commit()"></Button>
+        </StackLayout>
+
+        <StackLayout visibility="{{ toClaim ? 'visible' : 'collapsed' }}">
+            <Button text="Claim this offer" (tap)="claim()"></Button>
+        </StackLayout>
+        <StackLayout visibility="{{ toConfirm ? 'visible' : 'collapsed' }}">
+            <Button text="Confirm this offer" (tap)="confirm()"></Button>
+        </StackLayout>
+
+        <StackLayout visibility="{{ canDelete ? 'visible' : 'collapsed' }}">
+            <Button text="Delete this task offer" (tap)="delete()"></Button>
+        </StackLayout>
+    </StackLayout>
+</GridLayout>
