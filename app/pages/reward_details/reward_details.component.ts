@@ -39,6 +39,7 @@ export class RewardDetailsComponent implements OnInit {
     constructor(private rewardService: RewardService, private rewardDbService: RewardDbService,
         private activatedRoute: ActivatedRoute,
         private routerExtensions: RouterExtensions, private credentialService: CredentialService) {
+        this.reward = new Reward();
     }
 
     /**

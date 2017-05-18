@@ -50,6 +50,7 @@ export class OfferDetailsComponent implements OnInit {
     constructor(private offerService: OfferService, private activatedRoute: ActivatedRoute,
         private offerDbService: OfferDbService, private credentialService: CredentialService,
         private router: Router, private routerExtensions: RouterExtensions) {
+            this.offer = new Offer();
     }
 
     /**
