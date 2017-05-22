@@ -29,7 +29,7 @@ export class RewardDbService {
     /**
      * Insert a reward into local database
      */
-    insert(r: Reward):void {
+    insert(r: Reward): void {
         this.database.execSQL("INSERT INTO reward (rewardId, rewarder, buyer, price, name," +
             " description, code, used)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -38,12 +38,12 @@ export class RewardDbService {
             }, error => {
                 console.log("INSERT ERROR", error);
             });
-    }   
+    }
 
     /**
      * Update a reward from the database
      */
-    update(r: Reward):void {
+    update(r: Reward): void {
         this.database.execSQL("UPDATE reward SET buyer=?, used=? WHERE rewardId=?", [r.buyer, r.used, r.rewardId])
             .then(id => {
                 console.log("UPDATE RESULT", id);
@@ -55,7 +55,7 @@ export class RewardDbService {
     /**
      * Delete a reward from the database
      */
-    delete(r: Reward):void {
+    delete(r: Reward): void {
         this.database.execSQL("DELETE FROM reward WHERE rewardId=?", [r.rewardId])
             .then(id => {
                 console.log("DELETE RESULT", id);
@@ -137,6 +137,24 @@ export class RewardDbService {
      */
     fetchBought(): Promise<Array<Reward>> {
         return this.fetch("WHERE buyer!='' AND buyer!='0000000000000000000000000000000000000000'");
+    }
+
+    /**
+     * Return a promise which return the count of rewards matching the condition
+     * @param whereCondition Specify condition in SQL Formatted string
+     */
+    getCount(): Promise<number> {
+        let SQLString = "SELECT COUNT(*) from reward ";
+        return new Promise<number>((resolve, reject) => {
+            (new Sqlite("my.db")).then(db => {
+                db.all(SQLString).then(num => {
+                    resolve(num);
+                }, error => {
+                    console.log("SELECT ERROR", error);
+                    reject();
+                });
+            })
+        });
     }
 }
 

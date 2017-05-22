@@ -29,6 +29,8 @@ import { AddOfferComponent} from "./pages/add_offer/add_offer.component";
 
 import { AddRewardComponent} from "./pages/add_reward/add_reward.component";
 
+import {AchievementPanelComponent} from "./pages/achievement_panel/achievement_panel.component";
+
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { AddRewardComponent} from "./pages/add_reward/add_reward.component";
         MyRewardsComponent,
         AddOfferComponent,
         AddRewardComponent,
+        AchievementPanelComponent,
         MainPageComponent
     ],
     providers: [
