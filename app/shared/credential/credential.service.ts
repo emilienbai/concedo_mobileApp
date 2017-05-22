@@ -44,27 +44,4 @@ export class CredentialService {
   getStatus(): string {
     return appSettings.getString("userStatus");
   }
-
-  /**
-   * Set date of first use of the application
-   */
-  setStartDate(): void {
-    let strDate = appSettings.getString("startDate");
-    //Store date only on first use
-    if (strDate == undefined) {
-      let d = new Date();
-      appSettings.setString("startDate", d.toDateString());
-    }
-  }
-
-  /**
-   * Return date of first use of the app
-   */
-  getStartDate(): Date {
-    let strDate = appSettings.getString("startDate");
-    if (strDate == undefined) {
-      return new Date();
-    }
-    return new Date(strDate);
-  }
 }

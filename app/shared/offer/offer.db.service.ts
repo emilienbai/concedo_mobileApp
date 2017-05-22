@@ -109,30 +109,4 @@ export class OfferDbService {
     fetchArchived(): Promise<Array<Offer>> {
         return this.fetch("WHERE confirmed = 'true'");
     }
-
-    /**
-     * Fect all confirmed offer by Ascending order of confirmation
-     */
-    fetchOrdered(): Promise<Array<Offer>> {
-        let wc = "WHERE confirmed = 'true' ORDER BY confirmedOn ASC";
-        return this.fetch(wc);
-    }
-
-    /**
-     * Return a promise which return the count of offers matching the condition
-     * @param whereCondition Specify condition in SQL Formatted string
-     */
-    getCount(whereCondition: string): Promise<number> {
-        let SQLString = "SELECT COUNT(*) from offer WHERE " + whereCondition;
-        return new Promise<number>((resolve, reject) => {
-            (new Sqlite("my.db")).then(db => {
-                db.all(SQLString).then(num => {
-                    resolve(num);
-                }, error => {
-                    console.log("SELECT ERROR", error);
-                    reject();
-                });
-            })
-        });
-    }
 }

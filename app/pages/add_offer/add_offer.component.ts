@@ -4,13 +4,11 @@ import { Component } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { Offer } from "../../shared/offer/offer.object";
-import { OfferType } from "../../shared/offer/offer.type";
 import { OfferService } from "../../shared/offer/offer.service";
 import { OfferDbService } from "../../shared/offer/offer.db.service";
 import { CredentialService } from "../../shared/credential/credential.service";
 
-var typeList = [OfferType.driving, OfferType.shopping, OfferType.accompanying,
-OfferType.gardening, OfferType.diy, OfferType.other];
+var typeList = ["Driving", "Shopping", "Accompanying", "Gardening", "DIY", "Other"];
 
 @Component({
     selector: "ns-add-offer",

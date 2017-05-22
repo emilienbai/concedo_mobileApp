@@ -72,7 +72,6 @@ export class RegisterComponent {
                         this.credentialService.setCredentials(credentials);
                         this.credentialService.setStatus(this.user.type);
                         this.userService.setUser(this.user);
-                        this.credentialService.setStartDate();
                         this.routerExtensions.back();
                     })
             } else {
