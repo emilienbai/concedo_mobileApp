@@ -1,7 +1,7 @@
 <StackLayout>
     <Label class="h3" text="Your profile :"></Label>
     <GridLayout rows="60, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
-        <Image row="0" col="0" colSpan="2" src="res://icon" stretch="none" horizontalAlignment="center" class="todo"></Image>
+        <Image row="0" col="0" colSpan="2" src="res://icon" stretch="none" horizontalAlignment="center"></Image>
 
         <Label row="1" col="0" text="Pseudo : "></Label>
         <Label row="1" col="1" [text]="user.pseudo"></Label>
@@ -31,8 +31,12 @@
         <Button text="Add a task offer" [nsRouterLink]="['addOffer']"></Button>
     </StackLayout>
 
-        <!-- Rewarder Layout -->
+    <!-- Rewarder Layout -->
     <StackLayout visibility="{{ isRewarder ? 'visible' : 'collapsed' }}">
         <Button text="Add a reward" [nsRouterLink]="['addReward']"></Button>
+    </StackLayout>
+
+    <StackLayout>
+        <achievement-panel></achievement-panel>
     </StackLayout>
 </StackLayout>
