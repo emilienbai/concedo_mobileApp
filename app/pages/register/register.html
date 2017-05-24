@@ -16,6 +16,9 @@
             <Label text="Surname"></Label>
             <TextField hint="Surname" autocorrect="false" [(ngModel)]="user.surname"></TextField>
 
+            <Label text="Birth date"></Label>
+            <DatePicker (loaded)="onPickerLoaded($event)"  (dateChange)="onDateChanged($event)"></DatePicker>
+
             <Label text="Address"></Label>
             <TextField hint="Address" [(ngModel)]="address"></TextField>
 
@@ -31,7 +34,7 @@
             <Label text="E-mail"></Label>
             <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
             <Button text="Register" (tap)="submit()" class="btn btn-primary btn-active"></Button>
-            
+
         </StackLayout>
     </StackLayout>
 </ScrollView>

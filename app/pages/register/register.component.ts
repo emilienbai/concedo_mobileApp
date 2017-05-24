@@ -1,5 +1,6 @@
 import { TextField } from "ui/text-field";
 import { SegmentedBarItem } from "ui/segmented-bar"
+import { DatePicker } from "ui/date-picker";
 import { Component, NgModule } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
@@ -58,6 +59,30 @@ export class RegisterComponent {
     }
 
     /**
+     * When date picker is loaded set min max and current date
+     * @param args Loaded event
+     */
+    onPickerLoaded(args) {
+        let dp = <DatePicker>args.object;
+        let d = new Date();
+        let minDate = new Date(d.getFullYear() + -110, d.getMonth(), d.getDate());
+        let maxDate = new Date(d.getFullYear() + -13, d.getMonth(), d.getDate());
+        let date = new Date(d.getFullYear() + -20, d.getMonth(), d.getDate());
+        dp.minDate = minDate;
+
+        dp.maxDate = maxDate;
+        dp.date = date;
+    }
+
+    /**
+     * When date is modified, update user object accordingly
+     * @param args changed event
+     */
+    onDateChanged(args) {
+        this.user.birthdate = this.formatDate(new Date(args.value));
+    }
+
+    /**
      * Post the user on the chain
      * Store all of its informations locally
      * Store credentials locally
@@ -81,5 +106,18 @@ export class RegisterComponent {
         } else {
             alert("Please complete all fields")
         }
+    }
+
+    /**
+     * Format date to a readable string
+     * @param date Date to format
+     */
+    private formatDate(date: Date) {
+        let y = date.getFullYear();
+        let m = date.getMonth() + 1
+        let d = date.getDate();
+        let sm = (m >= 10 ? m : "0" + m);
+        let sd = (d >= 10 ? d : "0" + d);
+        return sd + "/" + sm + "/" + y;
     }
 }
