@@ -20,7 +20,7 @@ export class AchievementPanelComponent implements OnInit {
         this.achievementList = new Array();
     }
 
-    ngOnInit(): void {
+    ngOnInit(): void { //todo checkuser status : only if volunteer
         this.achievementList = this.achievementDbService.achievementList;
         this.achievementList.forEach(achievement => {
             achievement.levelFromRequirement((num, update) => {

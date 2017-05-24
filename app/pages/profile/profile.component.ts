@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
      * Check if trying to access own profile or some volunteer profile
      * Then load content accordingly 
      */
-    ngOnInit(): void { //Todo get user balance
+    ngOnInit(): void {
         if (this.offerId && this.userAddress) {
             this.user = new User();
             this.userService.getVonlunteer(this.offerId)

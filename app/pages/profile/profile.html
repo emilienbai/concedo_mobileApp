@@ -42,7 +42,7 @@
         <Button text="Add a reward" [nsRouterLink]="['addReward']"></Button>
     </StackLayout>
 
-    <StackLayout>
+    <StackLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
         <achievement-panel></achievement-panel>
     </StackLayout>
 </StackLayout>

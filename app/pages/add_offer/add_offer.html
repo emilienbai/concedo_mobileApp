@@ -4,9 +4,23 @@
             <Label text="Name / Title">Pseudo</Label>
             <TextField hint="Title" [(ngModel)]="offer.name"></TextField>
 
-            <Label text="Period" class="todoclean with dates"></Label>
-            <TextField hint="teriod" autocorrect="false" [(ngModel)]="offer.period"></TextField>
+            <DockLayout>
+                <Switch text="" dock="right" (checkedChange)="onSwitchChecked($event)"></Switch>
+                <Label text="Flexible dates" dock="right"></Label>
 
+                <Label dock="right" text="Period" class="todoclean with dates"></Label>
+            </DockLayout>
+            <!--            <TextField hint="teriod" autocorrect="false" [(ngModel)]="offer.period"></TextField>
+
+-->
+            <DockLayout>
+                <Label dock="left" [text]="flexibleDates? 'Between: ' : 'On: '" width="70"></Label>
+                <DatePicker dock="right" (loaded)="onStartPickerLoaded($event)" (dateChange)="onStartDateChanged($event)" verticalAlignment="center"></DatePicker>
+            </DockLayout>
+            <DockLayout visibility="{{ flexibleDates ? 'visible' : 'collapsed' }}">
+                <Label dock="left" text="And :" width="70"></Label>
+                <DatePicker dock="right" (loaded)="onEndPickerLoaded($event)" verticalAlignment="center"></DatePicker>
+            </DockLayout>
             <Label text="Duration (min)"></Label>
             <TextField hint=".." keyboardType="number" [(ngModel)]="offer.duration"></TextField>
 
