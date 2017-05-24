@@ -1,4 +1,6 @@
 <StackLayout>
+    <Label [text]="'Current level: ' + userLevel" class="h3"></Label>
+    <Label [text]="'Points: ' + userPoints" class="h4"></Label>
     <Label text='Achievements'></Label>
     <ListView [items]="achievementList" id="listId">
         <ng-template let-item="item">

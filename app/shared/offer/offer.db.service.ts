@@ -135,4 +135,21 @@ export class OfferDbService {
             })
         });
     }
+
+    /**
+     * Return the number of points the user have
+     */
+    getPoints(): Promise<number> {
+        let SQLString = "SELECT SUM(reward) FROM offer WHERE confirmed='true'";
+        return new Promise<number>((resolve, reject) => {
+            (new Sqlite("my.db")).then(db => {
+                db.all(SQLString).then(num => {
+                    resolve(num);
+                }, error => {
+                    console.log("SELECT ERROR", error);
+                    reject();
+                });
+            });
+        });
+    }
 }
