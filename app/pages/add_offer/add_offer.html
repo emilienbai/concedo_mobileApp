@@ -10,9 +10,7 @@
 
                 <Label dock="right" text="Period" class="todoclean with dates"></Label>
             </DockLayout>
-            <!--            <TextField hint="teriod" autocorrect="false" [(ngModel)]="offer.period"></TextField>
-
--->
+           
             <DockLayout>
                 <Label dock="left" [text]="flexibleDates? 'Between: ' : 'On: '" width="70"></Label>
                 <DatePicker dock="right" (loaded)="onStartPickerLoaded($event)" (dateChange)="onStartDateChanged($event)" verticalAlignment="center"></DatePicker>
@@ -33,8 +31,10 @@
             <TextView row="1" hint="Write a description of the task you need help for here" [(ngModel)]="offer.description"></TextView>"
         </GridLayout>
 
-        <ListPicker col="0" row="3" #picker [items]="items" [selectedIndex]="selectedIndex" (selectedIndexChange)="onChange(picker.selectedIndex)"></ListPicker>
-
+        <StackLayout col="0" row="3">
+            <Button text="Choose offer type" (tap)="displayOfferList()"></Button>
+            <Label visibility="{{ offer.type ? 'visible' : 'collapsed' }}" [text]="'Type : ' + offer.type"></Label>
+        </StackLayout>
         <Button col="0" row="4" text="Post this offer" (tap)="submit()" class="btn btn-primary btn-active"></Button>
 
     </GridLayout>

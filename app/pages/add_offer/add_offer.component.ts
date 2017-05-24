@@ -2,6 +2,7 @@ import { TextField } from "ui/text-field";
 import { ListPicker } from "ui/list-picker";
 import { DatePicker } from "ui/date-picker";
 import { Switch } from "ui/switch";
+import { action } from "ui/dialogs";
 import { EventData } from "data/observable";
 import { Component } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -53,7 +54,6 @@ export class AddOfferComponent {
         typeList.forEach(type => {
             this.items.push(type);
         })
-        this.offer.type = typeList[0];
     }
 
     /**
@@ -126,6 +126,20 @@ export class AddOfferComponent {
     onSwitchChecked(args) {
         let switchObj = <Switch>args.object;
         this.flexibleDates = switchObj.checked;
+    }
+
+    displayOfferList() {
+        let options = {
+            title: "Type selection",
+            message: "Choose type of offer",
+            cancelButtonText: "Cancel",
+            actions: typeList
+        };
+
+        action(options).then((result) => {
+            console.log(result);
+            this.offer.type = result;
+        });
     }
 
     /**
