@@ -4,11 +4,12 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 import { User } from "../../shared/user/user.object";
 import { UserService } from "../../shared/user/user.service";
+import { CredentialService } from "../../shared/credential/credential.service";
 
 
 @Component({
     selector: "ns-profile",
-    providers: [UserService],
+    providers: [UserService, CredentialService],
     moduleId: module.id,
     templateUrl: "./profile.html"
 })
@@ -38,8 +39,12 @@ export class ProfileComponent implements OnInit {
      * Display the buttons for an elderly user
      */
     isElderly: boolean = false;
+    /**
+     * Balance of current user
+     */
+    userBalance: number;
 
-    constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
+    constructor(private userService: UserService, private CredentialService:CredentialService, private activatedRoute: ActivatedRoute,
         private routerExtensions: RouterExtensions) {
         this.offerId = this.activatedRoute.snapshot.params['offerId'];
         this.userAddress = this.activatedRoute.snapshot.params['userAddress'];
@@ -49,7 +54,7 @@ export class ProfileComponent implements OnInit {
      * Check if trying to access own profile or some volunteer profile
      * Then load content accordingly 
      */
-    ngOnInit(): void { //Todo get user balance and level of permission
+    ngOnInit(): void { //Todo get user balance
         if (this.offerId && this.userAddress) {
             this.user = new User();
             this.userService.getVonlunteer(this.offerId)
@@ -64,6 +69,10 @@ export class ProfileComponent implements OnInit {
                 })
         } else {
             this.user = this.userService.getUser();
+            this.userService.getBalance(this.CredentialService.getCredentials().address)
+                .subscribe(balance => {
+                    this.userBalance = balance
+                });
             this.getStatus();
         }
     }

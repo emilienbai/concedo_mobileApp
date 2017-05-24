@@ -1,5 +1,11 @@
 <StackLayout>
     <Label class="h3" text="Your profile :"></Label>
+    <DockLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
+        <Label dock="left" class="h3" text='Your balance is '></Label>
+        <Label dock="left" class="h3" [text]="userBalance"></Label>
+        <Label dock="left" class="h3" text=' cryptoken(s)'></Label>
+    </DockLayout>
+
     <GridLayout rows="60, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
         <Image row="0" col="0" colSpan="2" src="res://icon" stretch="none" horizontalAlignment="center"></Image>
 

@@ -51,13 +51,29 @@ export class UserService {
   }
 
   /**
+   * Get the balance of a user account
+   * @param userAddress User we want to get the balance
+   */
+  getBalance(userAddress:string) {
+    let str = Config.apiUrl + "users/" + userAddress + "/balance";
+    return this.http.get(str, {
+      headers: this.appendHeaders()
+    })
+      .map(res => this.extractData(res))
+      .map(b => {
+        return b.balance;
+      })
+      .catch(this.handleErrors);
+  }
+
+  /**
    * Get a volunteer from an offer
    */
   getVonlunteer(offerId: string) {
     return this.http.get(Config.apiUrl + "Offer/" + offerId + "/volunteer", {
       headers: this.appendHeaders()
     })
-      .map(res => res.json())
+      .map(res => this.extractData(res))
       .map(u => {
         let user = new User();
         user.fromData(u);
