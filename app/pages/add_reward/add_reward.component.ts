@@ -27,7 +27,7 @@ export class AddRewardComponent {
         private credentialService: CredentialService, private routerExtensions: RouterExtensions) {
         this.selectedIndex = 0;
         this.reward = new Reward();
-        this.reward.count = 2;
+        this.reward.count = 1;
     }
 
     /**

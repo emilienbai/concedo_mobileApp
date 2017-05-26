@@ -61,7 +61,6 @@ export class Reward {
             this.buyer == r.buyer &&
             this.price == r.price &&
             this.name == r.name &&
-            this.count == r.count &&
             this.timeStamp == r.timeStamp &&
             this.description == r.description &&
             this.code == r.code
