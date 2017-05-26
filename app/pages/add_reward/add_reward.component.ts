@@ -27,6 +27,7 @@ export class AddRewardComponent {
         private credentialService: CredentialService, private routerExtensions: RouterExtensions) {
         this.selectedIndex = 0;
         this.reward = new Reward();
+        this.reward.count = 2;
     }
 
     /**
@@ -36,10 +37,14 @@ export class AddRewardComponent {
         if (this.reward.name != "" && this.reward.price != null
             && this.reward.description != "" && this.reward.code != "") {
             this.rewardService.post(this.reward)
-                .subscribe(data => {
+                .subscribe(idArray => {
                     this.reward.rewarder = this.credentialService.getCredentials().address;
-                    this.reward.rewardId = data.rewardId;
-                    this.rewardDbService.insert(this.reward);
+                    idArray.forEach(ID => {
+                        let r = new Reward();
+                        r.copy(this.reward);
+                        r.rewardId = ID;
+                        this.rewardDbService.insert(r);
+                    });
                     alert("Reward Added");
                     this.routerExtensions.back();
                 }, error => {

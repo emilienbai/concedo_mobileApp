@@ -87,7 +87,7 @@ export class RewardService {
       { headers: this.appendHeaders() }
     ).map(res => this.extractData(res))
       .map(data => {
-        return data;
+        return data.rewardId;
       })
       .catch(this.handleErrors);
   }

@@ -15,8 +15,11 @@
             <Label row="0" text="Description"></Label>
             <TextView row="1" hint="Write a description of the reward here" [(ngModel)]="reward.description"></TextView>"
         </GridLayout>
-
-        <!--Todo add multiple rewards at once-->
+        <GridLayout columns="4*, *" rows="auto, auto" row="3">
+            <Label row="0" text="Count"></Label>
+            <Slider row="1" col="0" [(ngModel)]="reward.count"  minValue="1" ></Slider>
+            <TextField row="1" col="1" hint=".." keyboardType="number"[(ngModel)]="reward.count"></TextField>
+        </GridLayout>
         <Button col="0" row="4" text="Add this Reward" (tap)="submit()" class="btn btn-primary btn-active"></Button>
     </GridLayout>
 </ScrollView>

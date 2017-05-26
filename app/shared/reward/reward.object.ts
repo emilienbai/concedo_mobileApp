@@ -40,6 +40,18 @@ export class Reward {
         this.used = dbr[7];
     }
 
+    copy(r: Reward): void {
+        this.rewardId = r.rewardId;
+        this.rewarder = r.rewarder;
+        this.buyer = r.buyer;
+        this.price = r.price;
+        this.name = r.name;
+        this.count = r.count;
+        this.timeStamp = r.timeStamp;
+        this.description = r.description;
+        this.code = r.code;
+    }
+
     /**
     * Check reward equality
      */
