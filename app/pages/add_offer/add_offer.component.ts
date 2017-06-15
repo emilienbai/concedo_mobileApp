@@ -3,6 +3,7 @@ import { ListPicker } from "ui/list-picker";
 import { DatePicker } from "ui/date-picker";
 import { Switch } from "ui/switch";
 import { action } from "ui/dialogs";
+import { Page } from "ui/page";
 import { EventData } from "data/observable";
 import { Component } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -49,11 +50,14 @@ export class AddOfferComponent {
      * Constructor for the Add Offer Component
      */
     constructor(private offerService: OfferService, private offerDbService: OfferDbService,
-        private credentialService: CredentialService, private routerExtensions: RouterExtensions) {
+        private credentialService: CredentialService, private routerExtensions: RouterExtensions,
+        private page: Page) {
         this.offer = new Offer();
         typeList.forEach(type => {
             this.items.push(type);
         })
+
+        this.page.actionBar.title="Add a new task offer";
     }
 
     /**

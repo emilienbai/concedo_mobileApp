@@ -1,5 +1,6 @@
 import { TextField } from "ui/text-field";
 import { Component } from "@angular/core";
+import { Page } from "ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { Reward } from "../../shared/reward/reward.object";
@@ -24,10 +25,12 @@ export class AddRewardComponent {
      * Constructor of the Add Reward Component
      */
     constructor(private rewardService: RewardService, private rewardDbService: RewardDbService,
-        private credentialService: CredentialService, private routerExtensions: RouterExtensions) {
+        private credentialService: CredentialService, private routerExtensions: RouterExtensions,
+        private page: Page) {
         this.selectedIndex = 0;
         this.reward = new Reward();
         this.reward.count = 1;
+        this.page.actionBar.title = "Add a new reward";
     }
 
     /**

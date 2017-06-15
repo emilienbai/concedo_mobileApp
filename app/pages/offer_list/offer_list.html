@@ -6,13 +6,13 @@
             <ng-template let-item="item">
                 <GridLayout columns="*, *, auto" rows="auto, auto, auto, auto">
                     <Label row="0" col="0" colSpan="2" [text]="item.name" class="h3"></Label>
-                    <StackLayout row="0" col="2" rowSpan="2" (tap)="getDetails(item)">
-                        <Image verticalAlignement="center" src="res://icon"></Image>
+                    <StackLayout class="leftAlign" row="0" col="2" rowSpan="2" (tap)="getDetails(item)">
+                        <Image class="more" src="res://more"></Image>
                     </StackLayout>
                     <Label row="1" col="0" colSpan="2" [text]="item.description"></Label>
                     <Label row="2" col="0" [text]="item.location"></Label>
                     <Label row="2" col="1" [text]="item.period"></Label>
-                    <Label row="2" col="2" [text]="item.type"></Label>
+                    <Label class="leftAlign" row="2" col="2" [text]="item.type"></Label>
                     <Label row="3" col="0" colSpan="3" [text]="'Status: ' + getStatus(item)"></Label>
                 </GridLayout>
             </ng-template>

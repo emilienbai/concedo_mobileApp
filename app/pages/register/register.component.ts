@@ -1,7 +1,8 @@
 import { TextField } from "ui/text-field";
 import { SegmentedBarItem } from "ui/segmented-bar"
 import { DatePicker } from "ui/date-picker";
-import { Component, NgModule } from "@angular/core";
+import { Page } from "ui/page";
+import { Component, NgModule, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { User } from "../../shared/user/user.object";
@@ -15,9 +16,10 @@ import { CredentialService } from "../../shared/credential/credential.service";
     providers: [UserService, CredentialService],
     moduleId: module.id,
     templateUrl: "./register.html",
+    styleUrls: ["register-common.css"]
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
     /**
      * User object being filled
      */
@@ -34,11 +36,20 @@ export class RegisterComponent {
      * City for user address
      */
     city: string;
+    /**
+     * Waiting for server
+     */
+    isWaiting: boolean;
 
     constructor(private userService: UserService, private credentialService: CredentialService,
-        private routerExtensions: RouterExtensions) {
+        private routerExtensions: RouterExtensions, private page: Page) {
         this.user = new User();
         this.onChange(0);
+        this.isWaiting = false;
+    }
+
+    ngOnInit() {
+        this.page.actionBar.title = "Register";
     }
 
     /**
@@ -91,6 +102,7 @@ export class RegisterComponent {
         if (this.address && this.postcode && this.city) {
             this.user.address = this.address + "\n" + this.postcode + "\n" + this.city;
             if (this.user.isComplete()) {
+                this.isWaiting = true;
                 this.userService.register(this.user)
                     .subscribe(result => {
                         let credentials = new Credential(result.credentials.address, result.credentials.pubKey, result.credentials.privKey);
@@ -98,7 +110,10 @@ export class RegisterComponent {
                         this.credentialService.setStatus(this.user.type);
                         this.userService.setUser(this.user);
                         this.credentialService.setStartDate();
-                        this.routerExtensions.back();
+                        this.routerExtensions.navigate(["/main_page"], { clearHistory: true });
+                    }, error => {
+                        alert(error);
+                        this.isWaiting = false;
                     })
             } else {
                 alert("Please complete all fields")

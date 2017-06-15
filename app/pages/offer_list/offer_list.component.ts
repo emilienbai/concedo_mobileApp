@@ -12,7 +12,7 @@ import { OfferDbService } from "../../shared/offer/offer.db.service";
   selector: "ns-offer-list",
   providers: [OfferService, OfferDbService],
   templateUrl: "./pages/offer_list/offer_list.html",
-
+  styleUrls:["pages/offer_list/offer_list-common.css"]
 })
 export class OfferListComponent implements OnInit {
   /**

@@ -1,0 +1,12 @@
+.more{
+    vertical-align: center;
+    text-align: right;
+    width:110px;
+    height: 110px;
+}
+
+.leftAlign{
+    float: right;
+    text-align: right;
+    width: 120px;
+}

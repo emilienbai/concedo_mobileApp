@@ -11,7 +11,7 @@ import { RewardDbService } from "../../shared/reward/reward.db.service";
   selector: "ns-reward-list",
   providers: [RewardService, RewardDbService],
   templateUrl: "./pages/reward_list/reward_list.html",
-
+  styleUrls:["pages/reward_list/reward_list-common.css"]
 })
 export class RewardListComponent implements OnInit {
   /**
@@ -45,8 +45,6 @@ export class RewardListComponent implements OnInit {
         .subscribe(retrievedReward => {
           if (!reward.Equal(retrievedReward)) {
             retrievedReward.used = reward.used;
-            console.log(JSON.stringify(reward));
-            console.log(JSON.stringify(retrievedReward));
             this.rewardDbService.update(retrievedReward);
             this.rewardList.push(retrievedReward);
             treated++;

@@ -4,12 +4,14 @@ import { CredentialService } from "../../shared/credential/credential.service";
 import { AchievementDbService } from "../../shared/achievement/achievement.db.service";
 import { Achievement } from "../../shared/achievement/achievement.interface";
 import { LevelService } from "../../shared/level/level.service";
+import { Observable, Subscription, Subject } from 'rxjs/Rx';
 
 @Component({
     selector: "achievement-panel",
     moduleId: module.id,
     templateUrl: "./achievement_panel.html",
-    providers: [CredentialService, AchievementDbService, LevelService]
+    providers: [CredentialService, AchievementDbService, LevelService],
+    styleUrls: ["achievement_panel-common.css"]
 })
 
 export class AchievementPanelComponent implements OnInit {
@@ -20,6 +22,7 @@ export class AchievementPanelComponent implements OnInit {
     constructor(private credentialService: CredentialService,
         private achievementDbService: AchievementDbService, private levelService: LevelService) {
         this.achievementList = new Array();
+
     }
 
     ngOnInit(): void {
@@ -38,6 +41,10 @@ export class AchievementPanelComponent implements OnInit {
                 }
             })
         }
+    }
+
+    getRow(value): number {
+        return Math.trunc(value);
     }
 
 }

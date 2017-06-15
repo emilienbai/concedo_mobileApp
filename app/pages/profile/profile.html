@@ -1,12 +1,11 @@
 <StackLayout>
-    <Label class="h3" text="Your profile :"></Label>
     <DockLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
-        <Label dock="left" class="h3" text='Your balance is '></Label>
+        <Label dock="left" class="h3" text='Your currently have '></Label>
         <Label dock="left" class="h3" [text]="userBalance"></Label>
         <Label dock="left" class="h3" text=' cryptoken(s)'></Label>
     </DockLayout>
 
-    <GridLayout rows="60, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+    <GridLayout rows="60, auto, auto, auto, auto, auto, auto, auto" columns="auto, *" class="grey-background">
         <Image row="0" col="0" colSpan="2" src="res://icon" stretch="none" horizontalAlignment="center"></Image>
 
         <Label row="1" col="0" text="Pseudo : "></Label>
@@ -19,18 +18,18 @@
         <Label row="4" col="1" [text]="user.phone"></Label>
         <Label row="5" col="0" text="Email : "></Label>
         <Label row="5" col="1" [text]="user.email"></Label>
-        <Label row="6" col="0" text="Type : "></Label>
-        <Label row="6" col="1" [text]="user.type"></Label>
+        <!--<Label row="6" col="0" text="Type : "></Label>
+        <Label row="6" col="1" [text]="user.type"></Label>-->
         <Label row="7" col="0" text="Birthdate : "></Label>
         <Label row="7" col="1" [text]="user.birthdate"></Label>
 
     </GridLayout>
 
     <!-- Volunteer Layout -->
-    <StackLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
-        <Button text="My Offers" [nsRouterLink]="['myOffers']"></Button>
-        <Button text="My Rewards" [nsRouterLink]="['myRewards']"></Button>
-    </StackLayout>
+    <GridLayout columns="*, *" rows="auto" visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
+        <Button class="light-blue" row="0" col="0" text="My Offers" [nsRouterLink]="['myOffers']"></Button>
+        <Button class="light-blue" row="0" col="1" text="My Rewards" [nsRouterLink]="['myRewards']"></Button>
+    </GridLayout>
 
     <!-- Elderly Layout -->
     <StackLayout visibility="{{ isElderly ? 'visible' : 'collapsed' }}">

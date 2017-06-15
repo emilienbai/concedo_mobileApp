@@ -62,6 +62,7 @@ export class RewardDetailsComponent implements OnInit {
             .subscribe(result => {
                 if (result.bought) {
                     this.reward.buyer = (this.credentialService.getCredentials()).address;
+                    this.reward.code = result.code; 
                     alert("reward bought");
                     this.rewardDbService.insert(this.reward);
                     this.checkAvailability();
@@ -112,7 +113,7 @@ export class RewardDetailsComponent implements OnInit {
                     break;
             }
         }
-        if (status == "volunteer" && !this.reward.used) {
+        else if (status == "volunteer" && !this.reward.used) {
             this.isUsable = true;
         }
     }

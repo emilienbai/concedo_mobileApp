@@ -1,5 +1,6 @@
 import { SegmentedBarItem } from "ui/segmented-bar"
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Page } from "ui/page";
+import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 
 import { CredentialService } from "../../shared/credential/credential.service";
 
@@ -11,7 +12,7 @@ import { CredentialService } from "../../shared/credential/credential.service";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
     /**
      * Display profile page
      */
@@ -49,7 +50,7 @@ export class MainPageComponent {
     /**
      * Constructor for the main page component
      */
-    constructor(private credentialService: CredentialService) {
+    constructor(private credentialService: CredentialService, private page: Page) {
         let userStatus = this.credentialService.getStatus();
         this.barItems = [];
 
@@ -96,6 +97,10 @@ export class MainPageComponent {
         }
     }
 
+    ngOnInit(): void {
+        this.page.actionBar.title = "Profile";
+    }
+
     /**
      * Triggered when the selected bar item changes
      */
@@ -104,30 +109,37 @@ export class MainPageComponent {
 
         switch (itemId) {
             case "profile":
+                this.page.actionBar.title = "Profile";
                 this.resetVisibility();
                 this.profileVisibility = true;
                 break;
             case "availableOffers":
+                this.page.actionBar.title = "Available Offers";
                 this.resetVisibility();
                 this.availableOffersVisibility = true;
                 break;
             case "currentLocalOffers":
+                this.page.actionBar.title = "My Offers";
                 this.resetVisibility();
                 this.currentLocalOffersVisibility = true;
                 break;
             case "archivedLocalOffers":
+                this.page.actionBar.title = "Archived Offers";
                 this.resetVisibility();
                 this.archivedLocalOffersVisibility = true;
                 break;
             case "rewards":
+                this.page.actionBar.title = "Available Rewards";
                 this.resetVisibility();
                 this.rewardsVisibility = true;
                 break;
             case "currentLocalRewards":
+                this.page.actionBar.title = "Rewards";
                 this.resetVisibility();
                 this.currentLocalRewardsVisibility = true;
                 break;
             case "archivedLocalRewards":
+                this.page.actionBar.title = "Used Rewards";
                 this.resetVisibility();
                 this.archivedLocalRewardsVisibility = true;
                 break;

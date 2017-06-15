@@ -6,12 +6,12 @@
             <ng-template let-item="item">
                 <GridLayout columns="*, *, auto" rows="auto, auto, auto">
                     <Label row="0" col="0" colSpan="2" [text]="item[0].name" class="h3"></Label>
-                    <StackLayout row="0" col="2" rowSpan="2" (tap)="getDetails(item[0])">
-                        <Image verticalAlignement="center" src="res://icon"></Image>
+                    <StackLayout class="leftAlign" row="0" col="2" rowSpan="2" (tap)="getDetails(item[0])">
+                        <Image class="more" verticalAlignement="center" src="res://more"></Image>
                     </StackLayout>
-                    <Label row="1" col="0" colSpan="2" [text]="item.description"></Label>
-                    <Label row="2" col="0" [text]="item[0].price"></Label>
-                    <Label row="2" col="2" [text]="item.length + ' of it'"></Label>
+                    <Label row="1" col="0" colSpan="2" [text]="item[0].description"></Label>
+                    <Label row="2" col="0" [text]="'Price: ' + item[0].price"></Label>
+                    <Label  class="leftAlign" row="2" col="2" [text]="item.length + ' pcs.'"></Label>
                 </GridLayout>
             </ng-template>
         </ListView>

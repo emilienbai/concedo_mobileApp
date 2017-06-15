@@ -1,13 +1,11 @@
 <ScrollView>
     <StackLayout>
-        <StackLayout>
-            <SegmentedBar #sb (selectedIndexChange)="onChange(sb.selectedIndex)">
-                <SegmentedBarItem title="Volunteer"></SegmentedBarItem>
-                <SegmentedBarItem title="Elderly"></SegmentedBarItem>
-                <SegmentedBarItem title="Rewarder"></SegmentedBarItem>
-            </SegmentedBar>
-
-            <Label text="Pseudo">Pseudo</Label>
+        <StackLayout class="medium-spacing">
+            <StackLayout class="sub-container">
+                <TextView editable="false" text="Fill in you personal information for registration. It will remain confidential but need to be accurate in order to validate your account."
+                    class="sub-text"></TextView>
+            </StackLayout>
+            <Label text="Pseudo - Pseudo is the only public information"></Label>
             <TextField hint="Pseudo" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.pseudo"></TextField>
 
             <Label text="Name"></Label>
@@ -17,7 +15,7 @@
             <TextField hint="Surname" autocorrect="false" [(ngModel)]="user.surname"></TextField>
 
             <Label text="Birth date"></Label>
-            <DatePicker (loaded)="onPickerLoaded($event)"  (dateChange)="onDateChanged($event)"></DatePicker>
+            <DatePicker (loaded)="onPickerLoaded($event)" (dateChange)="onDateChanged($event)"></DatePicker>
 
             <Label text="Address"></Label>
             <TextField hint="Address" [(ngModel)]="address"></TextField>
@@ -33,8 +31,20 @@
 
             <Label text="E-mail"></Label>
             <TextField hint="Email Address" keyboardType="email" [(ngModel)]="user.email" autocorrect="false" autocapitalizationType="none"></TextField>
-            <Button text="Register" (tap)="submit()" class="btn btn-primary btn-active"></Button>
 
+            <Label text="Account type"></Label>
         </StackLayout>
+
+        <SegmentedBar #sb (selectedIndexChange)="onChange(sb.selectedIndex)">
+            <SegmentedBarItem title="Volunteer"></SegmentedBarItem>
+            <SegmentedBarItem title="Elderly"></SegmentedBarItem>
+            <SegmentedBarItem title="Rewarder"></SegmentedBarItem>
+        </SegmentedBar>
+
+        <ActivityIndicator [busy]="isWaiting" [visibility]="isWaiting ? 'visible' : 'collapse'" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+
+        <Button text="Register" (tap)="submit()" class="btn btn-primary btn-active" [visibility]="!isWaiting ? 'visible' : 'collapse'" ></Button>
+
+
     </StackLayout>
 </ScrollView>

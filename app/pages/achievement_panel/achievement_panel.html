@@ -2,15 +2,14 @@
     <Label [text]="'Current level: ' + userLevel" class="h3"></Label>
     <Label [text]="'Points: ' + userPoints" class="h4"></Label>
     <Label text='Achievements'></Label>
-    <ListView [items]="achievementList" id="listId">
-        <ng-template let-item="item">
-            <GridLayout columns="*, *, auto" rows="auto, auto">
-                <Label row="0" col="0" colSpan="2" [text]="item.title" class="h3"></Label>
-                <Image row="0" col="2" rowSpan="3" verticalAlignement="center" [src]="item.currentsignifier"></Image>
 
-                <Label row="1" col="0" colSpan="2" [text]="item.description"></Label>
-            </GridLayout>
-        </ng-template>
-    </ListView>
+    <ScrollView>
+        <GridLayout columns="*, *, *" , rows="auto, auto, auto, auto, auto">
+            <StackLayout *ngFor="let achievement of achievementList; let col = index;" [col]="col%3" [row]="getRow(col/3)">
+                <Image class="identifier" width="45" verticalAlignement="center" [src]="achievement.currentsignifier"></Image>
+                <Label [text]="achievement.title" class ="achievement-title"></Label>
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
 
 </StackLayout>

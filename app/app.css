@@ -10,3 +10,32 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/core.light.css';
+Page {
+  background-color: white;
+  font-size: 15;
+}
+TextField {
+  padding: 10;
+  font-size: 13;
+}
+.grey-background {
+    background-color: #DDD;
+    border-radius: 20px;
+}
+
+.light-blue {
+    background-color: lightblue;
+}
+
+.small-spacing {
+  margin: 5;
+}
+.medium-spacing {
+  margin: 10;
+}
+.big-spacing {
+    margin: 15;
+}
+.xbig-spacing{
+    margin: 20;
+}
