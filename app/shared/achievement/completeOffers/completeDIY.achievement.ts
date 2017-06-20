@@ -6,7 +6,7 @@ export class CompleteDIYAchievement extends CompleteOffersAchievement {
         super();
         this.title = "Golden Fingers";
         this.description = "Complete 'DIY' offers to unlock this achievement"
-        //todo later this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://diy0", "res://diy1", "res://diy2", "res://diy3"];
         this.condition = "confirmed='true' AND type='" + OfferType.diy + "'";
         this.multiplierLvl = [5, 20, 50];
     }

@@ -6,7 +6,7 @@ export class CompleteDrivingAchievement extends CompleteOffersAchievement {
         super();
         this.title = "Driving Ace";
         this.description = "Complete 'Driving' offers to unlock this achievement"
-        //todo later this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://steeringwheel0", "res://steeringwheel1", "res://steeringwheel2", "res://steeringwheel3"];
         this.condition = "confirmed='true' AND type='"+OfferType.driving+"'";
         this.multiplierLvl = [5, 20, 50];
     }

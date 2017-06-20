@@ -13,7 +13,7 @@ export class UseForXDaysAchievement implements Achievement {
     constructor() {
         this.title = "Loyal User"
         this.description = "Keep using the app to unlock this achievement";
-        this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://keepgoing0", "res://keepgoing1", "res://keepgoing2", "res://keepgoing3"];
         this.currentsignifier = this.signifierArray[0];
         this.multiplierLvl = [30, 180, 365];
         this.credentialService = new CredentialService();

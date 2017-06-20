@@ -6,7 +6,7 @@ export class CompleteGardeningAchievement extends CompleteOffersAchievement {
         super();
         this.title = "Green hand";
         this.description = "Complete 'Gardening' offers to unlock this achievement"
-        //todo later this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://plant0", "res://plant1", "res://plant2", "res://plant3"];
         this.condition = "confirmed='true' AND type='" + OfferType.gardening + "'";
         this.multiplierLvl = [5, 20, 50];
     }

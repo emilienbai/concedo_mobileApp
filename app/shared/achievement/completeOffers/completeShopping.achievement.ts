@@ -6,7 +6,7 @@ export class CompleteShoppingAchievement extends CompleteOffersAchievement {
         super();
         this.title = "Shopping addict";
         this.description = "Complete 'Shopping' offers to unlock this achievement"
-        //todo later this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://caddie0", "res://caddie1", "res://caddie2", "res://caddie3"];
         this.condition = "confirmed='true' AND type='" + OfferType.shopping + "'";
         this.multiplierLvl = [5, 20, 50];
     }

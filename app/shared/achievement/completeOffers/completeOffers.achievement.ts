@@ -15,10 +15,10 @@ export class CompleteOffersAchievement implements Achievement {
     constructor() {
         this.title = "Offer filler"
         this.description = "Complete a certain number of offers to unlock this achievement"
-        this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://offers0", "res://offers1", "res://offers2", "res://offers3"];
         this.condition = "confirmed='true'";
         this.currentsignifier = this.signifierArray[0];
-        this.multiplierLvl = [10, 50, 100];
+        this.multiplierLvl = [10, 50, 100]
         this.offerDbService = new OfferDbService();
     }
 

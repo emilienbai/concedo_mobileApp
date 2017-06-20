@@ -14,7 +14,7 @@ export class BuyRewardsAchievement implements Achievement {
     constructor() {
         this.title = "Rewards addict";
         this.description = "Buy rewards to unlock this achievement";
-        this.signifierArray = ["res://icon0", "res://icon1", "res://icon2", "res://icon3"];
+        this.signifierArray = ["res://rewards0", "res://rewards1", "res://rewards2", "res://rewards3"];
         this.currentsignifier = this.signifierArray[0];
         this.multiplierLvl = [10, 50, 100];
         this.rewardDbService = new RewardDbService();
