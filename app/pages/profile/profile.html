@@ -27,18 +27,18 @@
 
     <!-- Volunteer Layout -->
     <GridLayout columns="*, *" rows="auto" visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">
-        <Button class="light-blue" row="0" col="0" text="My Offers" [nsRouterLink]="['myOffers']"></Button>
-        <Button class="light-blue" row="0" col="1" text="My Rewards" [nsRouterLink]="['myRewards']"></Button>
+        <Button class="light-blue" row="0" col="0" text="My Offers" [nsRouterLink]="['/myOffers']"></Button>
+        <Button class="light-blue" row="0" col="1" text="My Rewards" [nsRouterLink]="['/myRewards']"></Button>
     </GridLayout>
 
     <!-- Elderly Layout -->
     <StackLayout visibility="{{ isElderly ? 'visible' : 'collapsed' }}">
-        <Button text="Add a task offer" [nsRouterLink]="['addOffer']"></Button>
+        <Button text="Add a task offer" [nsRouterLink]="['/addOffer']"></Button>
     </StackLayout>
 
     <!-- Rewarder Layout -->
     <StackLayout visibility="{{ isRewarder ? 'visible' : 'collapsed' }}">
-        <Button text="Add a reward" [nsRouterLink]="['addReward']"></Button>
+        <Button text="Add a reward" [nsRouterLink]="['/addReward']"></Button>
     </StackLayout>
 
     <StackLayout visibility="{{ isVolunteer ? 'visible' : 'collapsed' }}">

@@ -36,6 +36,7 @@ export class AchievementPanelComponent implements OnInit {
             this.levelService.getUserLevel((lvl, points, up) => {
                 this.userLevel = lvl;
                 this.userPoints = points;
+                if(this.userPoints == 0) this.userPoints = 0;
                 if (up) {
                     alert("Congrats, you gained a level. You are now level " + lvl + "!")
                 }

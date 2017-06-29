@@ -31,7 +31,5 @@ export class HomePageComponent implements OnInit {
             this.routerExtensions.navigate(["/main_page"], { clearHistory: true });
         }
         this.page.actionBarHidden = true;
-        //this.page.backgroundImage = "res://bg_inner";
-        //this.page.backgroundColor= #0101
     }
 }

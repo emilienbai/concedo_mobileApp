@@ -1,9 +1,12 @@
-FILENAME=$1
-echo $FILENAME
+for i in *.png;
+do
+    filename=$(basename "$i")
+    #extension=="${filename##*.}"
+    filename="${filename%.*}"
 
-cp $FILENAME".png" $FILENAME"@3x.png"
-cp $FILENAME".png" $FILENAME"-copy.png"
-convert -resize 66.667% ./$FILENAME"-copy.png" $FILENAME"@2x.png"
+    cp $filename".png" $filename"@3x.png"
+    #cp $FILENAME".png" $FILENAME"-copy.png"
+    convert -resize 66.667% ./$filename".png" $filename"@2x.png"
 
-convert -resize 33.333% ./$FILENAME"-copy.png" ./$FILENAME".png"
-
+    convert -resize 33.333% ./$filename".png" ./$filename".png"
+done
