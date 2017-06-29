@@ -57,7 +57,7 @@ export class AddOfferComponent {
             this.items.push(type);
         })
 
-        this.page.actionBar.title="Add a new task offer";
+        this.page.actionBar.title = "Add a new task offer";
     }
 
     /**
@@ -76,19 +76,20 @@ export class AddOfferComponent {
             this.offer.period += "-" + this.formatDate(this.endDatePicker.date);
         }
         if (this.offer.name != "" && this.offer.period != "" && this.offer.duration != null
-            && this.offer.location != "" && this.offer.description != "") {
+            && this.offer.location != "" && this.offer.description != "" && this.offer.type !="") {
             this.offerService.post(this.offer)
-                .subscribe(data => {
+                .subscribe(
+                (data) => {
                     this.offer.offerId = data.offerId;
                     this.offer.reward = data.reward;
                     this.offer.beneficiary = this.credentialService.getCredentials().address;
                     this.offerDbService.insert(this.offer);
                     alert("Offer saved");
                     this.routerExtensions.back();
-                }),
-                error => {
+                },
+                (error) => {
                     alert("Error while adding task offer");
-                }
+                })
         } else {
             alert("Please complete all fields");
         }
